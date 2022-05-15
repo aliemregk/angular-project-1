@@ -8,6 +8,9 @@ import { AppComponent } from './app.component';
 import { NaviComponent } from './components/navi/navi.component';
 import { CategoryComponent } from './components/category/category.component';
 import { BodyComponent } from './components/body/body.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductDetailsComponent } from './components/product-details/product-details.component';
 
 
 @NgModule({
@@ -15,7 +18,10 @@ import { BodyComponent } from './components/body/body.component';
     AppComponent,
     NaviComponent,
     CategoryComponent,
-    BodyComponent
+    BodyComponent,
+    FooterComponent,
+    ProductsComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
