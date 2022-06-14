@@ -1,130 +1,37 @@
 <div class="container d-flex flex-row justify-content-between">
-  <div class="col-2 me-4">
-    <!-- TODO add *ngFor for filters -->
-    <div>
-      <div class="list-group-item fw-bold">Size</div>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value=""> XS
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value=""> S
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value=""> M
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value=""> L
-      </label>
-      <label class="list-group-item">
-        <input class="form-check-input me-1" type="checkbox" value=""> XL
-      </label>
-    </div>
+  <div class="col-2 me-1">
+    <app-category></app-category>
   </div>
+
+  <div *ngIf="!dataLoaded" class="spinner-border text-dark col-md-6" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+
   <div class="col-10">
     <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
-      <!-- TODO add *ngFor for products -->
-      <div class="container"><a class="nav-link" routerLink="/products/productdetails">product</a></div>
-      <div class="col-2">
+      <div class="col-2" *ngFor="let product of products">
         <div class="card shadow-sm">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
-            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-              dy=".3em">Thumbnail</text>
+          <svg routerLink="productdetails" class="bd-placeholder-img card-img-top" width="100%" height="200" role="img"
+            focusable="false">
+            <!-- TODO change product photo-->
+            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
           </svg>
           <div class="card-body">
-            <p class="card-text fs-6 lh-1">This is a wider card
-              with supporting text below as a natural lead-in to additional content.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+            <div class="">
+              <div routerLink="productdetails">
+                <h6 class="card-title">{{product.name}}</h6>
+                <p class="card-text lh-1">{{product.description}}</p>
+              </div>
+              <div class="d-flex justify-content-between">
+                <div class="price">
+                  <p>{{product.unitPrice}}</p>
+                </div>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
+                </div>
               </div>
             </div>
-          </div>
-        </div>
 
-      </div>
-      <div class="col-2">
-        <div class="card shadow-sm">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
-            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-              dy=".3em">Thumbnail</text>
-          </svg>
-
-          <div class="card-body">
-            <p class="card-text fs-6 lh-1">This is a wider card
-              with supporting text below as a natural lead-in to additional content. This content is a little bit
-              longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-2">
-        <div class="card shadow-sm">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
-            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-              dy=".3em">Thumbnail</text>
-          </svg>
-
-          <div class="card-body">
-            <p class="card-text fs-6 lh-1">This is a wider card
-              with supporting text below as a natural lead-in to additional content. This content is a little bit
-              longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-2">
-        <div class="card shadow-sm">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
-            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-              dy=".3em">Thumbnail</text>
-          </svg>
-
-          <div class="card-body">
-            <p class="card-text fs-6 lh-1">This is a wider card
-              with supporting text below as a natural lead-in to additional content. This content is a little bit
-              longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-2">
-        <div class="card shadow-sm">
-          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
-            role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-              dy=".3em">Thumbnail</text>
-          </svg>
-
-          <div class="card-body">
-            <p class="card-text fs-6 lh-1">This is a wider card
-              with supporting text below as a natural lead-in to additional content. This content is a little bit
-              longer.</p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                <button type="button" class="btn btn-sm btn-outline-secondary">Add to cart</button>
-              </div>
-            </div>
           </div>
         </div>
       </div>

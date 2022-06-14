@@ -49,6 +49,11 @@
   -webkit-overflow-scrolling: touch;
 }
 
+.card {
+  max-height: 20em !important;
+  min-height: 20em !important;
+}
+
 .card-body {
   max-height: 15em !important;
   overflow: hidden;
@@ -56,5 +61,32 @@
 
 .card-text {
   max-height: 4em !important;
+  overflow: hidden;
+  font-size: small !important;
+}
+
+.card-img-top {
+  max-height: 10em;
+  min-height: 10em;
+}
+
+p {
+  cursor: default;
+}
+
+.btn-group {
+  position: absolute !important;
+  bottom: .5em;
+  right: 1.6em;
+}
+
+.price {
+  position: absolute;
+  bottom: .5em;
+  margin: 0;
+  padding: 0;
+  height: 30px;
+  width: fit-content;
+  font: bold;
   overflow: hidden;
 }
