@@ -11,7 +11,7 @@ export class CategoryComponent implements OnInit {
 
   categories: Category[] = [];
   dataLoaded = false;
-  currentCategory!: Category;
+  currentCategory: Category;
 
   constructor(private categoryService: CategoryService) { }
 
@@ -30,16 +30,16 @@ export class CategoryComponent implements OnInit {
     this.currentCategory = category;
   }
 
-  resetCurrentCategory() {
-    this.currentCategory = this.categories[-1];
-  }
-
   getCurrentCategoryClass(category: Category) {
     if (category == this.currentCategory) {
       return "list-group-item active"
     } else {
       return "list-group-item"
     }
+  }
+
+  resetCurrentCategory() {
+    this.currentCategory = this.categories[-1];
   }
 
   getAllCategoryClass() {

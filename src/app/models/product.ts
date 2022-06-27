@@ -4,6 +4,6 @@ export interface Product {
     description: string;
     unitPrice: number;
     unitsInStock: number;
-    discount?: number;
+    discount: number;
     categoryId: number;
 }
