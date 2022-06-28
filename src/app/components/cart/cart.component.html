@@ -1,5 +1,5 @@
 <div *ngIf="cartItems.length == 0" class="m-auto d-flex justify-content-center w-50 alert alert-danger">
-  There is nothing in your cart.
+  Your cart is empty.
 </div>
 <div class="container w-75" *ngIf="cartItems.length">
   <table class="table table-light table-hover text-center">
@@ -24,12 +24,14 @@
         <td></td>
         <td></td>
         <td>{{cartTotalPrice()}}</td>
+        <td></td>
       </tr>
       <tr class="fw-bold">
         <td></td>
         <td></td>
         <td></td>
         <td><button type="button" class="btn btn-success" routerLink="payment">Confirm cart</button></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

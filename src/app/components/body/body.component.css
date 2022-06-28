@@ -1,3 +1,11 @@
-.a{
-    border: 2px solid red;
+.a {
+  border: 2px solid red;
+}
+
+#body {
+  flex-basis: 100%;
+}
+
+.category{
+  cursor: pointer;
 }
