@@ -6,4 +6,5 @@ export interface Product {
     unitsInStock: number;
     discount: number;
     categoryId: number;
+    coverImg: string;
 }

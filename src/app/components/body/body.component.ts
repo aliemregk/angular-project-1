@@ -1,3 +1,6 @@
+import { ToastrService } from 'ngx-toastr';
+import { Photo } from './../../models/photo';
+import { PhotoService } from './../../services/photo.service';
 import { Category } from 'src/app/models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Component, OnInit } from '@angular/core';
@@ -12,7 +15,11 @@ export class BodyComponent implements OnInit {
   categories: Category[] = [];
   dataLoaded = false;
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private photoService: PhotoService,
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.getCategories();
@@ -24,4 +31,5 @@ export class BodyComponent implements OnInit {
       this.dataLoaded = true
     })
   }
+
 }

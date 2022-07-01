@@ -18,6 +18,16 @@ import { FilterPipePipe } from './pipes/filter-pipe.pipe';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductAddComponent } from './components/product-add/product-add.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { LoginComponent } from './components/login/login.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { AdminPanelComponent } from './components/admin-panel/admin-panel.component';
+import { RegisterComponent } from './components/register/register.component';
+import { ProductPanelComponent } from './components/admin-panel/product-panel/product-panel.component';
+import { MainCategoryPanelComponent } from './components/admin-panel/main-category-panel/main-category-panel.component';
+import { CategoryPanelComponent } from './components/admin-panel/category-panel/category-panel.component';
+import { UserPanelComponent } from './components/admin-panel/user-panel/user-panel.component';
+import { OrderPanelComponent } from './components/admin-panel/order-panel/order-panel.component';
+import { OrderDetailsComponent } from './components/order-details/order-details.component';
 
 
 @NgModule({
@@ -34,7 +44,16 @@ import { PaymentComponent } from './components/payment/payment.component';
     FilterPipePipe,
     CartComponent,
     ProductAddComponent,
-    PaymentComponent
+    PaymentComponent,
+    LoginComponent,
+    AdminPanelComponent,
+    RegisterComponent,
+    ProductPanelComponent,
+    MainCategoryPanelComponent,
+    CategoryPanelComponent,
+    UserPanelComponent,
+    OrderPanelComponent,
+    OrderDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +66,9 @@ import { PaymentComponent } from './components/payment/payment.component';
       positionClass: "toast-bottom-right"
     })
   ],
-  providers: [NaviComponent],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

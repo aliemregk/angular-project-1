@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,10 +8,30 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NaviComponent implements OnInit {
 
-  constructor() { }
-  
+  constructor(private authService: AuthService) { }
+
   ngOnInit(): void {
-    
+
   }
 
+  isLogged() {
+    if (localStorage.getItem("token")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isAdmin() {
+    if (this.authService.admin) {
+      return true;
+    }
+    else {
+      return false;
+    }
+  }
+
+  logOut(){
+    localStorage.clear();
+  }
 }

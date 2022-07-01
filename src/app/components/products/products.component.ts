@@ -4,7 +4,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
-
+import { Photo } from 'src/app/models/photo';
 
 @Component({
   selector: 'app-products',
@@ -16,12 +16,13 @@ export class ProductsComponent implements OnInit {
   products: Product[] = [];
   dataLoaded = false;
   filterText = "";
+  photos: Photo[] = [];
+  photoUrls: Photo[] = [];
 
   constructor(private productService: ProductService,
     private activatedRoute: ActivatedRoute,
     private toastrService: ToastrService,
-    private cartService: CartService
-  ) { }
+    private cartService: CartService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {

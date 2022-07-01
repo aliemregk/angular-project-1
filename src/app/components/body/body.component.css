@@ -1,11 +1,17 @@
-.a {
-  border: 2px solid red;
-}
-
 #body {
   flex-basis: 100%;
 }
 
-.category{
+.category {
   cursor: pointer;
+}
+
+.centered {
+  color: brown;
+  font: 3.3rem bold;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }

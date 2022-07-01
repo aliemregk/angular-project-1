@@ -3,4 +3,5 @@ export interface Category {
     name: string;
     mainCategoryId: number;
     discount?: number;
+    photoUrl:string;
 }

@@ -1,3 +1,5 @@
+import { ToastrService } from 'ngx-toastr';
+import { ProductService } from 'src/app/services/product.service';
 import { Category } from './../../models/category';
 import { CategoryService } from 'src/app/services/category.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,7 +16,10 @@ export class ProductAddComponent implements OnInit {
   numberOfCategories: number = 0;
 
   constructor(private formBuilder: FormBuilder,
-    private categoryService: CategoryService) { }
+    private categoryService: CategoryService,
+    private productService: ProductService,
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.createProductAddForm();
@@ -38,7 +43,12 @@ export class ProductAddComponent implements OnInit {
   }
 
   add() {
-
+    if (this.productAddForm.valid) {
+      let productModel = Object.assign({}, this.productAddForm.value);
+      this.productService.add(productModel).subscribe({
+        next: (response) => { this.toastrService.success(response.message, "Added successfully.") },
+        error: () => { this.toastrService.error("Can not add. Invalid value(s).") }
+      })
+    }
   }
-
 }

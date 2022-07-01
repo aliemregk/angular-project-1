@@ -23,17 +23,12 @@
   <div class="col-10">
     <div class="row row-cols-2 row-cols-sm-2 row-cols-md-4 g-3">
       <div class="col-2" *ngFor="let product of products | filterPipe:filterText">
-        <div class="card shadow-sm">
-          <svg routerLink="productdetails" class="bd-placeholder-img card-img-top" width="100%" height="200" role="img"
-            focusable="false">
-            <!-- TODO change product photo-->
-            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef" dy=".3em"></text>
-          </svg>
+        <div class="card shadow-sm" routerLink="/products/category/{{product.categoryId}}/productdetails/{{product.id}}">
+          <img class="bd-placeholder-img card-img-top" [src]="product.coverImg" alt="{{product.name}} photo" style="height: 100%; width: 100%;">
           <div class="card-body">
             <div>
-              <div routerLink="productdetails">
+              <div>
                 <h6 class="card-title">{{product.name}}</h6>
-                <p class="card-text lh-1">{{product.description}}</p>
               </div>
               <div class="d-flex justify-content-between">
                 <!-- TODO change button and price positions-->
