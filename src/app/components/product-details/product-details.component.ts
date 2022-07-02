@@ -1,3 +1,5 @@
+import { CartService } from 'src/app/services/cart.service';
+import { ToastrService } from 'ngx-toastr';
 import { Product } from 'src/app/models/product';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
@@ -18,12 +20,15 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private photoService: PhotoService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private toastrService: ToastrService,
+    private cartService: CartService
+    ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      this.getProductById(params["id"]);
-      this.getProductPhotos(params["id"])
+      this.getProductById(params["productid"]);
+      this.getProductPhotos(params["productid"])
     })
   }
 
@@ -34,9 +39,19 @@ export class ProductDetailsComponent implements OnInit {
     })
   }
 
-  getProductPhotos(id :number){
-    this.photoService.getAllByProductId(id).subscribe(data =>{
+  getProductPhotos(id: number) {
+    this.photoService.getAllByProductId(id).subscribe(data => {
       this.photos = data.data
     })
   }
+
+  addToCart(product: Product) {
+    if (product.unitsInStock == 0) {
+      this.toastrService.error(product.name + " is out of stock. Can not add to cart.");
+    } else {
+      this.cartService.addToCart(product);
+      this.toastrService.success(product.name + " added to cart.");
+    }
+  }
+
 }

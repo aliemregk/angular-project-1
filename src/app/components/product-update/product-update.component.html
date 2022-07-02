@@ -1,14 +1,17 @@
 <div class="card col-md-8 m-auto">
   <div class="card-header">
-    <h5 class="title">Add a new product</h5>
+    <h5 class="title">Edit product</h5>
   </div>
-  <div class="card-body">
+  <div class="card-body" *ngIf="!productLoaded">
+    <h5 class="header">Can not get product details, please check connection.</h5>
+  </div>
+  <div class="card-body" *ngIf="productLoaded">
     <div [formGroup]="productAddForm" class="container col-md-10">
+
       <div class="mb-3">
         <label for="productName">Product Name</label>
         <div class="form-group">
-          <input id="productName" type="text" class="form-control" formControlName="name"
-            placeholder="Enter product name here..">
+          <input id="productName" type="text" name="productName" class="form-control" formControlName="name">
         </div>
       </div>
       <div class="mb-3">
@@ -33,6 +36,13 @@
         </div>
       </div>
       <div class="mb-3">
+        <label for="discount">Discount Rate</label>
+        <div class="form-group">
+          <input id="discount" type="number" min="0" max="99" class="form-control" formControlName="discount"
+            placeholder="Enter discount rate here..">
+        </div>
+      </div>
+      <div class="mb-3">
         <label for="description">Product Description</label>
         <div class="form-group">
           <input id="description" type="text" class="form-control" formControlName="description"
@@ -40,7 +50,7 @@
         </div>
       </div>
       <div class="mb-3">
-        <label for="photo">Product Photos</label>
+        <label for="photo">Product Cover Image</label>
         <div class="form-group">
           <input id="photo" type="text" class="form-control" formControlName="coverImg"
             placeholder="Product cover photo..">
@@ -50,7 +60,7 @@
   </div>
   <div class="card-footer">
     <div class="d-flex justify-content-center">
-      <button class="btn btn-fill btn-primary" (click)="add()">Add Product</button>
+      <button class="btn btn-fill btn-primary" (click)="update()">Update Product</button>
     </div>
   </div>
 </div>

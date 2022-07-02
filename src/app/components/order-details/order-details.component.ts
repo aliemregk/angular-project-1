@@ -11,27 +11,31 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrderDetailsComponent implements OnInit {
 
-
   items: Order[] = [];
+  detail: Order;
   dataLoaded = false;
+
   constructor(private orderService: OrderService,
     private toasterService: ToastrService,
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.getOrders();
     this.activatedRoute.params.subscribe((params) => {
-
       this.getOrderDetails(params["id"]);
-
     })
   }
 
-  getOrderDetails(id:number) {
-    // this.orderService.get .subscribe((response) => {
-    //   this.items = response.data
-    //   this.dataLoaded = true
-    // })
+  getOrders() {
+    this.orderService.getOrderDetails().subscribe((response) => {
+      this.items = response.data
+      this.dataLoaded = true
+    })
+  }
+
+  getOrderDetails(id :number) {
+    this.detail = this.items.find(i => i.id == id)
   }
 
   deleteOrder(order: Order) {

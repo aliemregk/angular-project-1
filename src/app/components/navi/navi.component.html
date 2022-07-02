@@ -4,13 +4,19 @@
       <span class="fs-4">LOGO</span>
     </a>
     <ul class="nav">
-      <li class="nav-item"><a routerLink="adminpanel" class="nav-link link-dark px-2">Admin Panel</a></li>
-      <li class="nav-item"><a routerLink="cart" class="nav-link link-dark px-2" id="cart">Cart</a></li>
+      <li class="nav-item">
+        <a routerLink="adminpanel" class="nav-link link-dark px-2">Admin Panel</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="cart" class="nav-link link-dark px-2" id="cart">Cart</a>
+      </li>
       <li class="nav-item">
         <a *ngIf="!isLogged()" routerLink="login" class="nav-link link-dark px-2">Login</a>
-        <a *ngIf="isLogged()" routerLink="" class="nav-link link-dark px-2" (click)="logOut()" >Log out</a>
+        <a *ngIf="isLogged()" routerLink="" class="nav-link link-dark px-2" (click)="logOut()">Log out</a>
       </li>
-      <li *ngIf="!isLogged()" class="nav-item"><a href="#" class="nav-link link-dark px-2">Sign up</a></li>
+      <li *ngIf="!isLogged()" class="nav-item">
+        <a routerLink="register" class="nav-link link-dark px-2">Sign up</a>
+      </li>
     </ul>
   </div>
 </header>

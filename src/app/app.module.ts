@@ -28,6 +28,10 @@ import { CategoryPanelComponent } from './components/admin-panel/category-panel/
 import { UserPanelComponent } from './components/admin-panel/user-panel/user-panel.component';
 import { OrderPanelComponent } from './components/admin-panel/order-panel/order-panel.component';
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
+import { CommentsComponent } from './components/comments/comments.component';
+import { CategoryAddComponent } from './components/category-add/category-add.component';
+import { MainCategoryAddComponent } from './components/main-category-add/main-category-add.component';
+import { ProductUpdateComponent } from './components/product-update/product-update.component';
 
 
 @NgModule({
@@ -53,7 +57,11 @@ import { OrderDetailsComponent } from './components/order-details/order-details.
     CategoryPanelComponent,
     UserPanelComponent,
     OrderPanelComponent,
-    OrderDetailsComponent
+    OrderDetailsComponent,
+    CommentsComponent,
+    CategoryAddComponent,
+    MainCategoryAddComponent,
+    ProductUpdateComponent
   ],
   imports: [
     BrowserModule,

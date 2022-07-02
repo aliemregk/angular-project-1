@@ -1,4 +1,4 @@
-import { Category } from './../../../models/category';
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { MainCategory } from 'src/app/models/mainCategory';
 import { MainCategoryService } from 'src/app/services/mainCategory.service';
@@ -12,7 +12,9 @@ export class MainCategoryPanelComponent implements OnInit {
 
   items: MainCategory[] = [];
   dataLoaded = false;
-  constructor(private mainCategoryService: MainCategoryService) { }
+  constructor(private mainCategoryService: MainCategoryService,
+    private toastrService: ToastrService,
+  ) { }
 
   ngOnInit(): void {
     this.getMainCategories();
@@ -25,4 +27,11 @@ export class MainCategoryPanelComponent implements OnInit {
     })
   }
 
+  delete(mainCategory: MainCategory) {
+    this.mainCategoryService.delete(mainCategory).subscribe({
+      next: (response) => this.toastrService.info("Main category deleted." , response.message),
+      error: (errorResponse) => this.toastrService.error("Cant deleted." , errorResponse.message),
+      complete: () => this.getMainCategories()
+    })
+  }
 }

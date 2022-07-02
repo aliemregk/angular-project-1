@@ -33,7 +33,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let user of users">
-          <th scope="row">{{user.id}}</th>
+          <th scope="row">{{users.indexOf(user) +1}}</th>
           <td>{{user.firstName}} {{user.lastName}}</td>
           <td>{{user.email}}</td>
           <td>{{user.phone}}</td>

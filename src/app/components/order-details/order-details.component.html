@@ -33,17 +33,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of items">
-          <th scope="row">{{item.id}}</th>
-          <td>{{item.userId}}</td>
-          <td>{{item.productId}}</td>
-          <td>{{item.totalPrice}}</td>
-          <td>{{item.orderDate}}</td>
-          <td *ngIf="item.deliveryDate">{{item.deliveryDate}}</td>
-          <td *ngIf="!item.deliveryDate">Not delivered yet.</td>
+        <tr>
+          <th scope="row">{{detail.id}}</th>
+          <td>{{detail.userId}}</td>
+          <td>{{detail.productId}}</td>
+          <td>{{detail.totalPrice}}</td>
+          <td>{{detail.orderDate}}</td>
+          <td *ngIf="detail.deliveryDate">{{detail.deliveryDate}}</td>
+          <td *ngIf="!detail.deliveryDate">Not delivered yet.</td>
           <td><button type="button" class="btn btn-outline-primary"
-              routerLink="/order-panel/orderdetails/{{item.id}}">Edit</button></td>
-          <td><button type="button" class="btn btn-outline-danger" (click)="deleteOrder(item)">Delete</button></td>
+              routerLink="/order-panel/orderdetails/{{detail.id}}">Edit</button></td>
+          <td><button type="button" class="btn btn-outline-danger" (click)="deleteOrder(detail)">Delete</button></td>
         </tr>
       </tbody>
     </table>

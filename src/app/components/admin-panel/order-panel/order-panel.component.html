@@ -29,19 +29,21 @@
           <th scope="col">Order Date</th>
           <th scope="col">Delivery Date</th>
           <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of items">
-          <th scope="row">{{item.id}}</th>
+          <th scope="row">{{items.indexOf(item) +1}}</th>
           <td>{{item.userId}}</td>
           <td>{{item.productId}}</td>
           <td>{{item.totalPrice}}</td>
           <td>{{item.orderDate}}</td>
           <td *ngIf="item.deliveryDate">{{item.deliveryDate}}</td>
           <td *ngIf="!item.deliveryDate">Not delivered yet.</td>
-          <td><button type="button" class="btn btn-outline-primary"
-              routerLink="/order-panel/orderdetails/{{item.id}}">Edit</button></td>
+          <td><button type="button" class="btn btn-outline-primary" (click)="delivered(item)">Delivered</button></td>
+          <td><button type="button" class="btn btn-outline-danger" (click)="deleteOrder(item)">Delete</button></td>
+
         </tr>
       </tbody>
     </table>

@@ -26,6 +26,10 @@ export class OrderService {
     return this.httpClient.get<ListResponseModel<Order>>(this.apiUrl + "getallbyproductid?id=" + id);
   }
 
+  getOrderDetails(): Observable<ListResponseModel<Order>> {
+    return this.httpClient.get<ListResponseModel<Order>>(this.apiUrl + "getorderdetails");
+  }
+
   add(order: Order): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "add", order);
   }

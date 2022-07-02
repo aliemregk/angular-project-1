@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ProductService } from 'src/app/services/product.service';
 import { Category } from './../../models/category';
@@ -18,7 +19,8 @@ export class ProductAddComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private categoryService: CategoryService,
     private productService: ProductService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class ProductAddComponent implements OnInit {
       unitsInStock: ["", Validators.required],
       categoryId: ["", Validators.required],
       description: ["", Validators.required],
+      coverImg: ["", Validators.required]
     })
   }
 
@@ -46,8 +49,9 @@ export class ProductAddComponent implements OnInit {
     if (this.productAddForm.valid) {
       let productModel = Object.assign({}, this.productAddForm.value);
       this.productService.add(productModel).subscribe({
-        next: (response) => { this.toastrService.success(response.message, "Added successfully.") },
-        error: () => { this.toastrService.error("Can not add. Invalid value(s).") }
+        next: (response) => { this.toastrService.success("Added successfully.", response.message) },
+        error: (errorResponse) => { this.toastrService.error("Can not add.", errorResponse.message) },
+        complete: () => this.router.navigate(["product-panel"])
       })
     }
   }
