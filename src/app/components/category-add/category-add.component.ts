@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CategoryService } from 'src/app/services/category.service';
+import { MainCategoryService } from 'src/app/services/mainCategory.service';
 
 @Component({
   selector: 'app-category-add',
@@ -12,22 +13,24 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryAddComponent implements OnInit {
 
   categoryAddForm: FormGroup;
+  numberOfCategories: number = 0;
 
   constructor(private formBuilder: FormBuilder,
     private categoryService: CategoryService,
+    private mainCategoryService: MainCategoryService,
     private toastrService: ToastrService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
     this.createProductAddForm();
+    this.getNumberOfCategories();
   }
 
   createProductAddForm() {
     this.categoryAddForm = this.formBuilder.group({
       name: ["", Validators.required],
       mainCategoryId: ["", Validators.required],
-      discount: [0],
       photoUrl: ["", Validators.required]
     })
   }
@@ -40,8 +43,14 @@ export class CategoryAddComponent implements OnInit {
         error: (errorResponse) => { this.toastrService.error("Can not add.", errorResponse.message) },
         complete: () => this.router.navigate(["category-panel"])
       })
-    }else{
+    } else {
       this.toastrService.error("Can not add. Invalid value(s).")
     }
+  }
+
+  getNumberOfCategories() {
+    this.mainCategoryService.getCategories().subscribe(c => {
+      this.numberOfCategories = c.data.length
+    });
   }
 }

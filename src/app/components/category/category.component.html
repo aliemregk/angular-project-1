@@ -5,7 +5,10 @@
   <li routerLink="/products" class="list-group-item">
     All Products
   </li>
-  <li *ngFor="let category of categories" routerLink="/products/category/{{category.id}}"  class="list-group-item">
+  <li routerLink="/products/discounted" class="list-group-item">
+    Discounted Products
+  </li>
+  <li *ngFor="let category of categories" routerLink="/products/category/{{category.id}}" class="list-group-item">
     {{category.name}}
   </li>
 </ul>

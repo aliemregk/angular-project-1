@@ -1,7 +1,7 @@
 import { Product } from '../../models/product';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 import { Photo } from 'src/app/models/photo';
@@ -21,6 +21,7 @@ export class ProductsComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private toastrService: ToastrService,
     private cartService: CartService) { }
 
@@ -28,6 +29,9 @@ export class ProductsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params) => {
       if (params["id"]) {
         this.getProductsByCategoryId(params["id"]);
+      }
+      else if (this.router.url.includes("/products/discounted")) {
+        this.getDiscountedProducts();
       } else {
         this.getProducts();
       }
@@ -46,6 +50,13 @@ export class ProductsComponent implements OnInit {
       this.products = response.data
       this.dataLoaded = true
     });
+  }
+
+  getDiscountedProducts() {
+    this.productService.getProducts().subscribe((response) => {
+      this.products = response.data.filter(p => p.discount != 0)
+      this.dataLoaded = true
+    })
   }
 
   addToCart(product: Product) {

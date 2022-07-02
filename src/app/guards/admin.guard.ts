@@ -15,12 +15,16 @@ export class AdminGuard implements CanActivate {
     private router: Router
   ) { }
 
-  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+  canActivate(
+    route: ActivatedRouteSnapshot, 
+    state: RouterStateSnapshot): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
+
     if (this.authService.admin) {
       return true;
     } else {
+      localStorage.clear;
       this.router.navigate(["login"]);
-      this.toastrService.info("You must be admin to continue.");
+      this.toastrService.info("You must be admin to continue. Please log in as admin.");
       return false;
     }
   }

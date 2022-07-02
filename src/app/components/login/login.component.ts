@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("token", response.data.token)
           this.router.navigate([""])
         }, responseError =>{
-          this.toastrService.info("Login failed.")
+          this.toastrService.info("Login failed.", responseError.message)
         })
       }
   }

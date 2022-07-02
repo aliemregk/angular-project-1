@@ -25,6 +25,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 const routes: Routes = [
   { path: "", pathMatch: "full", component: BodyComponent },
   { path: "products", component: ProductsComponent },
+  { path: "products/discounted", component: ProductsComponent },
   { path: "products/category/:id", component: ProductsComponent },
   { path: "products/category/:id/productdetails/:productid", component: ProductDetailsComponent },
   { path: "products/productdetails/:id", component: ProductDetailsComponent },
@@ -32,21 +33,20 @@ const routes: Routes = [
   { path: "cart/payment", component: PaymentComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
-  { path: "profile", component: ProfileComponent }, // login
+  { path: "profile", component: ProfileComponent, canActivate: [LoginGuard] },
   // Admin route section
-  { path: "adminpanel", component: AdminPanelComponent },
-  { path: "product-panel", component: ProductPanelComponent },
-  { path: "product-panel/products/add", component: ProductAddComponent },
-  { path: "product-panel/products/update/:id", component: ProductUpdateComponent },
-  { path: "maincategory-panel", component: MainCategoryPanelComponent },
-  { path: "maincategories/add", component: MainCategoryAddComponent },
-  { path: "category-panel", component: CategoryPanelComponent },
-  { path: "categories/add", component: CategoryAddComponent },
-  { path: "order-panel", component: OrderPanelComponent },
-  { path: "order-panel/orderdetails/:id", component: OrderDetailsComponent },
-  { path: "user-panel", component: UserPanelComponent }
+  { path: "adminpanel", component: AdminPanelComponent, canActivate: [AdminGuard] },
+  { path: "product-panel", component: ProductPanelComponent, canActivate: [AdminGuard] },
+  { path: "product-panel/products/add", component: ProductAddComponent, canActivate: [AdminGuard] },
+  { path: "product-panel/products/update/:id", component: ProductUpdateComponent, canActivate: [AdminGuard] },
+  { path: "maincategory-panel", component: MainCategoryPanelComponent, canActivate: [AdminGuard] },
+  { path: "maincategories/add", component: MainCategoryAddComponent, canActivate: [AdminGuard] },
+  { path: "category-panel", component: CategoryPanelComponent, canActivate: [AdminGuard] },
+  { path: "categories/add", component: CategoryAddComponent, canActivate: [AdminGuard] },
+  { path: "order-panel", component: OrderPanelComponent, canActivate: [AdminGuard] },
+  { path: "order-panel/orderdetails/:id", component: OrderDetailsComponent, canActivate: [AdminGuard] },
+  { path: "user-panel", component: UserPanelComponent, canActivate: [AdminGuard] }
 ];
-//, canActivate: [AdminGuard]   , canActivate: [LoginGuard]
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

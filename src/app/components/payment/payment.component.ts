@@ -15,11 +15,7 @@ export class PaymentComponent implements OnInit {
   total: number = 0;
   cartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService,
-    private orderService: OrderService,
-    private toastrService: ToastrService,
-    private router :Router
-  ) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.getTotalPrice();
@@ -30,9 +26,6 @@ export class PaymentComponent implements OnInit {
     this.total = this.cartService.getTotalPrice();
   }
 
-  createOrder() {
-
-  }
 
   getCart() {
     this.cartItems = this.cartService.list();
