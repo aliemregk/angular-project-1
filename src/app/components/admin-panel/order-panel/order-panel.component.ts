@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
-import { Order } from 'src/app/models/order';
+import { OrderDetail } from 'src/app/models/orderDetail';
 import { OrderService } from 'src/app/services/order.service';
 import { formatDate } from '@angular/common';
 
@@ -11,7 +11,7 @@ import { formatDate } from '@angular/common';
 })
 export class OrderPanelComponent implements OnInit {
 
-  items: Order[] = [];
+  items: OrderDetail[] = [];
   dataLoaded = false;
   constructor(private orderService: OrderService,
     private toastrService: ToastrService) { }
@@ -21,13 +21,13 @@ export class OrderPanelComponent implements OnInit {
   }
 
   getOrders() {
-    this.orderService.getOrders().subscribe((response) => {
+    this.orderService.getOrderDetails().subscribe((response) => {
       this.items = response.data
       this.dataLoaded = true
     })
   }
 
-  delivered(order: Order) {
+  delivered(order: OrderDetail) {
     if (!order.isDelivered) {
       order.deliveryDate = formatDate(new Date(), 'dd/MM/yyyy', 'en');
       order.isDelivered = true;
@@ -40,7 +40,7 @@ export class OrderPanelComponent implements OnInit {
     }
   }
 
-  deleteOrder(order: Order) {
+  deleteOrder(order: OrderDetail) {
     this.orderService.delete(order).subscribe({
       next: (response) => this.toastrService.info("Order deleted." , response.message),
       error: (errorResponse) => this.toastrService.error("Cant deleted." , errorResponse.message),

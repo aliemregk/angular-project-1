@@ -40,11 +40,12 @@ export class RegisterComponent implements OnInit {
       this.authService.register(registerModel).subscribe({
         next: (response) => {
           this.toastrService.info("Registered.", response.message)
+          this.authService.getUserId(registerModel.email)
           localStorage.setItem("token", response.data.token)
           this.router.navigate([""])
         },
         error: (responseError) => {
-          this.toastrService.error("Register failed.", responseError.message)
+          this.toastrService.error("Register failed.")
         }
       })
     }else{

@@ -32,6 +32,7 @@ import { CommentsComponent } from './components/comments/comments.component';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
 import { MainCategoryAddComponent } from './components/main-category-add/main-category-add.component';
 import { ProductUpdateComponent } from './components/product-update/product-update.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ProductUpdateComponent } from './components/product-update/product-upda
     CommentsComponent,
     CategoryAddComponent,
     MainCategoryAddComponent,
-    ProductUpdateComponent
+    ProductUpdateComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

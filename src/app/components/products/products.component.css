@@ -80,6 +80,11 @@ p {
   right: .6em;
 }
 
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
 .price {
   position: absolute;
   bottom: .5em;

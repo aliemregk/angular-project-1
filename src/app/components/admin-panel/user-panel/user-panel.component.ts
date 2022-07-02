@@ -31,6 +31,7 @@ export class UserPanelComponent implements OnInit {
   deleteUser(user: User) {
     this.userService.delete(user).subscribe(response => {
       this.toastrService.error("User deleted.");
+      this.getAll();
     })
   }
 }

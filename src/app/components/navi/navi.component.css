@@ -1,6 +1,4 @@
-#cart{
-    background-color: #0b5ed7;
-    color: white;
-    border-radius: 10%;
-    font: bolder !important;
+.btn:focus {
+  outline: none;
+  box-shadow: none;
 }

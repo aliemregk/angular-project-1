@@ -1,3 +1,4 @@
+import { OrderDetail } from './../../models/orderDetail';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
@@ -11,8 +12,8 @@ import { OrderService } from 'src/app/services/order.service';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  items: Order[] = [];
-  detail: Order;
+  items: OrderDetail[] = [];
+  detail: OrderDetail;
   dataLoaded = false;
 
   constructor(private orderService: OrderService,
@@ -38,13 +39,13 @@ export class OrderDetailsComponent implements OnInit {
     this.detail = this.items.find(i => i.id == id)
   }
 
-  deleteOrder(order: Order) {
+  deleteOrder(order: OrderDetail) {
     this.orderService.delete(order).subscribe((response) => {
       this.toasterService.error(response.message, "Order deleted.");
     })
   }
 
-  updateOrder(order: Order) {
+  updateOrder(order: OrderDetail) {
     this.orderService.update(order).subscribe((response) => {
       this.toasterService.error(response.message, "Order deleted.");
     })

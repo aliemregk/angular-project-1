@@ -3,7 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Order } from '../models/order';
+import { OrderDetail } from '../models/orderDetail';
 import { ResponseModel } from '../models/responseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -26,19 +28,19 @@ export class OrderService {
     return this.httpClient.get<ListResponseModel<Order>>(this.apiUrl + "getallbyproductid?id=" + id);
   }
 
-  getOrderDetails(): Observable<ListResponseModel<Order>> {
-    return this.httpClient.get<ListResponseModel<Order>>(this.apiUrl + "getorderdetails");
+  getOrderDetails(): Observable<ListResponseModel<OrderDetail>> {
+    return this.httpClient.get<ListResponseModel<OrderDetail>>(this.apiUrl + "getorderdetails");
   }
 
-  add(order: Order): Observable<ResponseModel> {
+  add(order: OrderDetail): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "add", order);
   }
 
-  update(order: Order): Observable<ResponseModel> {
+  update(order: OrderDetail): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "update", order);
   }
 
-  delete(order: Order): Observable<ResponseModel> {
+  delete(order: OrderDetail): Observable<ResponseModel> {
     return this.httpClient.post<ResponseModel>(this.apiUrl + "delete", order);
   }
 }

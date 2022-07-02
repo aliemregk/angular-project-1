@@ -1,23 +1,27 @@
 <header class="py-3 border-bottom">
   <div class="container d-flex flex-wrap justify-content-between">
-    <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
+    <a routerLink="" class="d-flex align-items-center mb-3 mb-lg-0 text-dark text-decoration-none">
       <span class="fs-4">LOGO</span>
     </a>
     <ul class="nav">
-      <li class="nav-item">
-        <a routerLink="adminpanel" class="nav-link link-dark px-2">Admin Panel</a>
+      <li class="nav-item px-1" *ngIf="isAdmin()">
+        <button type="button"  routerLink="adminpanel" class="btn btn-outline-primary">Admin Panel</button>
+      </li>
+      <li class="nav-item px-1">
+        <button type="button" id="cart" routerLink="cart" class="btn btn-outline-primary">Cart</button>
       </li>
       <li class="nav-item">
-        <a routerLink="cart" class="nav-link link-dark px-2" id="cart">Cart</a>
+        <button type="button" *ngIf="!isLogged()" routerLink="login" class="btn btn-outline-primary">Login</button>
+        <button type="button" *ngIf="!isLogged()" routerLink="profile" class="btn btn-outline-primary">Profile</button>
       </li>
-      <li class="nav-item">
-        <a *ngIf="!isLogged()" routerLink="login" class="nav-link link-dark px-2">Login</a>
-        <a *ngIf="isLogged()" routerLink="" class="nav-link link-dark px-2" (click)="logOut()">Log out</a>
+      <li class="nav-item px-1" *ngIf="isLogged()">
+        <button type="button" routerLink=""  class="btn btn-outline-primary" (click)="logOut()">
+          Log out
+        </button>
       </li>
-      <li *ngIf="!isLogged()" class="nav-item">
-        <a routerLink="register" class="nav-link link-dark px-2">Sign up</a>
+      <li class="nav-item px-1">
+        <button type="button" routerLink="register" *ngIf="!isLogged()" class="btn btn-outline-primary">Sign up</button>
       </li>
     </ul>
   </div>
 </header>
-<!-- *ngIf="isAdmin()"  -->

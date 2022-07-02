@@ -1,5 +1,9 @@
+import { CartItem } from 'src/app/models/cartItem';
 import { Component, OnInit } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-payment',
@@ -8,15 +12,29 @@ import { CartService } from 'src/app/services/cart.service';
 })
 export class PaymentComponent implements OnInit {
 
-  total:number = 0;
+  total: number = 0;
+  cartItems: CartItem[] = [];
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService,
+    private orderService: OrderService,
+    private toastrService: ToastrService,
+    private router :Router
+  ) { }
 
   ngOnInit(): void {
     this.getTotalPrice();
+    this.getCart();
   }
 
-  getTotalPrice(){
+  getTotalPrice() {
     this.total = this.cartService.getTotalPrice();
+  }
+
+  createOrder() {
+
+  }
+
+  getCart() {
+    this.cartItems = this.cartService.list();
   }
 }

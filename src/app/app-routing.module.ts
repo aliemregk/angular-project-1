@@ -20,6 +20,7 @@ import { UserPanelComponent } from './components/admin-panel/user-panel/user-pan
 import { OrderDetailsComponent } from './components/order-details/order-details.component';
 import { CategoryAddComponent } from './components/category-add/category-add.component';
 import { RegisterComponent } from './components/register/register.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 const routes: Routes = [
   { path: "", pathMatch: "full", component: BodyComponent },
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: "cart/payment", component: PaymentComponent },
   { path: "login", component: LoginComponent },
   { path: "register", component: RegisterComponent },
+  { path: "profile", component: ProfileComponent }, // login
   // Admin route section
   { path: "adminpanel", component: AdminPanelComponent },
   { path: "product-panel", component: ProductPanelComponent },
