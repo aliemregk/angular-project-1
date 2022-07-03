@@ -34,8 +34,8 @@ export class MainCategoryAddComponent implements OnInit {
     if (this.mainCategoryAddForm.valid) {
       let mainCategoryModel = Object.assign({}, this.mainCategoryAddForm.value);
       this.mainCategoryService.add(mainCategoryModel).subscribe({
-        next: (response) => { this.toastrService.success("Added successfully.", response.message) },
-        error: (errorResponse) => { this.toastrService.error("Can not add.", errorResponse.message) },
+        next: (response) => { this.toastrService.success("New main category added.", response.message) },
+        error: () => { this.toastrService.error("Can not add.") },
         complete: () => this.router.navigate(["maincategory-panel"])
       })
     }
